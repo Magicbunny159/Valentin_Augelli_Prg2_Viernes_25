@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[RequireComponent(typeof(Rigidbody))]
+
 public class PL4Y3R : MonoBehaviour
 {
 
-    Rigidbody _rb;
+    Rigidbody _rb; //llamar al rigibody
 
     [Header("speed")]
     [SerializeField] float _seed;
@@ -22,7 +25,7 @@ public class PL4Y3R : MonoBehaviour
 
     private void Awake()
     {
-        _rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>(); //asegurar que comience con ese componente
     }
 
     void Start()
