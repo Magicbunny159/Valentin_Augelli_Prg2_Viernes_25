@@ -10,7 +10,10 @@ public class PL4Y3R : MonoBehaviour
 
     Rigidbody _rb; //llamar al rigibody
 
-    [Header("speed")]
+   
+
+
+    [Header("speed")] //header es nombrar el titulo de la funcion
     [SerializeField] float _seed;
 
 
