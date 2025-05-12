@@ -14,11 +14,11 @@ public class PL4Y3R : MonoBehaviour
 
 
     [Header("speed")] //header es nombrar el titulo de la funcion
-    [SerializeField] float _seed;
-
+    [SerializeField] float _speed;
+    [SerializeField] float _jumpForce;
 
     [Header("Keys")]
-    [SerializeField] KeyCode _jumpKey = KeyCode.Space;
+    [SerializeField] KeyCode _KeyTojump = KeyCode.Space;
 
     float _xAxi;
     float _zAxi;
@@ -29,6 +29,7 @@ public class PL4Y3R : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>(); //asegurar que comience con ese componente
+        _direction = Vector3.zero;
     }
 
     void Start()
@@ -40,28 +41,36 @@ public class PL4Y3R : MonoBehaviour
     void Update()
     {
 
-        //if (Input.GetKeyDown(_keyToJump))
-        //{
-
-        //}
-
-    }
-
-    private void FixedUpdate()
-    {
-        _direction.x = Input.GetAxis("Horizontal");
-        _direction.y = Input.GetAxis("Vertical");
-
-        if (_direction.sqrMagnitude < 1)
+        if (Input.GetKeyDown(_KeyTojump))
         {
-            _direction.Normalize();
 
         }
 
-        //_rb.Velocity =
-        //_rb.AddForce(_direction * _speed, ForceMode.Acceleration);
-        _rb.MovePosition(transform.position + _direction * (_seed * Time.fixedDeltaTime));
+        _direction.x = Input.GetAxis("Horizontal");
+        _direction.z = Input.GetAxis("Vertical");
+
+        if (_direction.sqrMagnitude > 1)
+        {
+            _direction.Normalize();
+        }
+        transform.position += _direction *(_speed * Time.deltaTime);
+
+        //if (_direction.sqrMagnitude < 1)
+        //{
+        //    _direction.Normalize();
+
+        //}
+        //_rb.MovePosition(transform.position + _direction * (_speed * Time.fixedDeltaTime));
+
+
     }
+
+    //private void FixedUpdate()
+    //{
+
+        
+       
+    //}
 
 
 
